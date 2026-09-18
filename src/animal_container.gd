@@ -61,7 +61,30 @@ func spawn_animal():
 	
 	active_animal = scene
 
-func _on_in_button_button_down() -> void:
+func spawn_player():
+	var player = Player.instantiate()
+	add_child(player)
+	plr = player
+	
+func press_out():
+	if active_animal == null:
+		return
+	
+	if not active_animal.should_be_allowed_in:
+		# correct
+		money += money_per_animal_correct
+	else:
+		money += money_per_animal_wrong
+	
+	update_money()
+	
+	active_animal.exit_bar()
+	if time_left > 0:
+		spawn_animal()
+	else:
+		show_day_over_screen()
+
+func press_in():
 	if active_animal == null:
 		return
 	
@@ -79,29 +102,13 @@ func _on_in_button_button_down() -> void:
 	else:
 		show_day_over_screen()
 
-func spawn_player():
-	var player = Player.instantiate()
-	add_child(player)
-	plr = player
-	
+func _on_in_button_button_down() -> void:
+	press_in()
 	
 func _on_out_button_button_down() -> void:
-	if active_animal == null:
-		return
+	press_out()
 	
-	if not active_animal.should_be_allowed_in:
-		# correct
-		money += money_per_animal_correct
-	else:
-		money += money_per_animal_wrong
-	
-	update_money()
-	
-	active_animal.exit_bar()
-	if time_left > 0:
-		spawn_animal()
-	else:
-		show_day_over_screen()
+
 
 func show_day_over_screen():
 	$"../UI/DayOverScreen".visible = true
@@ -137,3 +144,11 @@ func _on_button_button_down() -> void:
 	$"../UI/DayOverScreen".visible = false
 	spawn_player()
 	spawn_animal()
+
+
+func _on_in_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	press_in()
+
+
+func _on_out_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	press_out()
