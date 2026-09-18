@@ -1,5 +1,6 @@
 extends Node2D
 
+var Player = preload("res://src/scenes/player.tscn")
 var AnimalScene = preload("res://src/scenes/animal.tscn")
 
 var species_data = {
@@ -27,6 +28,7 @@ var rules = [
 # but ALLOW X (red hAts)
 
 var active_animal = null
+var plr = null
 
 var day = 0
 var time_left = 30
@@ -36,6 +38,7 @@ var money_per_animal_correct = 5
 var money_per_animal_wrong = -15
 
 func _ready() -> void:
+	spawn_player()
 	spawn_animal()
 
 func _process(delta: float) -> void:
@@ -76,6 +79,12 @@ func _on_in_button_button_down() -> void:
 	else:
 		show_day_over_screen()
 
+func spawn_player():
+	var player = Player.instantiate()
+	add_child(player)
+	plr = player
+	
+	
 func _on_out_button_button_down() -> void:
 	if active_animal == null:
 		return
@@ -99,15 +108,19 @@ func show_day_over_screen():
 	if money >= rent:
 		$"../UI/DayOverScreen/Label".text = "Day " + str(day + 1) + " Over"
 		$"../UI/DayOverScreen/Button".text = "Pay Rent ($" + str(rent) + ")"
+		plr.die()
 	else:
 		$"../UI/DayOverScreen/Label".text = "Game Over (Day " + str(day + 1) + ")"
 		$"../UI/DayOverScreen/Button".text = "Restart"
+		plr.die()
 
 func update_money():
 	$"../UI/Money".text = "Money: " + str(money)
+	
 
 func update_time():
 	$"../UI/Time".text = "Time: " + str(round(time_left) as int) + "s"
+	
 
 
 func _on_button_button_down() -> void:
@@ -120,5 +133,7 @@ func _on_button_button_down() -> void:
 		day += 1
 	time_left = 30
 	update_time()
+	update_money()
 	$"../UI/DayOverScreen".visible = false
+	spawn_player()
 	spawn_animal()
