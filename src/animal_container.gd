@@ -7,20 +7,11 @@ var species_data = {
 		"type": "prey"
 	},
 	"fox": {
-		"type": "predator"
+		"type": "predators"
 	},
 }
 
-var rules = [
-	{
-		"rule": "allow",
-		"type": "prey",
-	},
-	{
-		"rule": "disallow",
-		"type": "predator",
-	}
-]
+var rules = []
 # types of rules:
 # ALLOW PREY, DISALLOW PREDATORS
 # but DISALLOW X (red hAts)
@@ -29,14 +20,41 @@ var rules = [
 var active_animal = null
 
 var day = 0
-var time_left = 30
-var rent = 30
+var time_left = 0
+var rent = 0
 var money = 0
 var money_per_animal_correct = 5
 var money_per_animal_wrong = -15
 
 func _ready() -> void:
-	spawn_animal()
+	start_game()
+
+func start_game():
+	day = 0
+	rent = 30
+	money = 0
+	rules = [
+		{
+			"rule": "allow",
+			"type": "prey",
+		},
+		{
+			"rule": "disallow",
+			"type": "predators",
+		}
+	]
+	start_day()
+
+func start_day():
+	if day != 0:
+		rent += 5
+	update_money()
+	update_time()
+	update_rules()
+	$"../UI/DayOverScreen".visible = false
+	$"../UI/DayStartScreen".visible = true
+	$"../UI/DayStartScreen/Label".text = "Day " + str(day + 1)
+	$"../UI/DayStartScreen/Label2".text = "Rent Increased to $" + str(rent)
 
 func _process(delta: float) -> void:
 	time_left -= delta
@@ -109,16 +127,27 @@ func update_money():
 func update_time():
 	$"../UI/Time".text = "Time: " + str(round(time_left) as int) + "s"
 
+func update_rules():
+	var rules_text = "RULES:"
+	for rule in rules:
+		rules_text += "\n"
+		rules_text += rule.rule.to_upper() + " "
+		if rule.type != null:
+			rules_text += rule.type.to_upper()
+	$"../UI/Rules".text = rules_text
+
 
 func _on_button_button_down() -> void:
 	if money < rent:
-		day = 0
-		money = 0
-		rent = 30
+		start_game()
 	else:
 		money -= rent
 		day += 1
-	time_left = 30
-	update_time()
-	$"../UI/DayOverScreen".visible = false
+		start_day()
+
+
+func _on_button2_button_down() -> void:
+	$"../UI/DayStartScreen".visible = false
 	spawn_animal()
+	time_left = 5
+	update_time()
