@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://femsgk4xcyjs"]
+
+[ext_resource type="Script" uid="uid://je0udwi3t65c" path="res://src/animal_container.gd" id="1_gh0ne"]
+
+[node name="Main" type="Node2D" unique_id=843306803]
+
+[node name="AnimalContainer" type="Node2D" parent="." unique_id=1323399360]
+script = ExtResource("1_gh0ne")
+
+[node name="UI" type="Control" parent="." unique_id=87576420]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InButton" type="Button" parent="UI" unique_id=817739765]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 334.0
+offset_right = 474.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 64
+text = "IN"
+
+[node name="OutButton" type="Button" parent="UI" unique_id=1753711058]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 336.0
+offset_right = 641.0
+offset_bottom = 367.0
+theme_override_font_sizes/font_size = 64
+text = "OUT"
+
+[node name="Money" type="Label" parent="UI" unique_id=441837531]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Money: 0"
+
+[connection signal="button_down" from="UI/InButton" to="AnimalContainer" method="_on_in_button_button_down"]
+[connection signal="button_down" from="UI/OutButton" to="AnimalContainer" method="_on_out_button_button_down"]

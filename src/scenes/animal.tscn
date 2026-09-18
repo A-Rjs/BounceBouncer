@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://7sik58lw0eaf"]
+
+[ext_resource type="Script" uid="uid://diysf7mx4bgfg" path="res://src/scenes/animal.gd" id="1_l3y21"]
+[ext_resource type="Texture2D" uid="uid://cs5njuq4jms1w" path="res://icon.svg" id="1_wtwr2"]
+
+[node name="Animal" type="Sprite2D" unique_id=524858043]
+texture = ExtResource("1_wtwr2")
+script = ExtResource("1_l3y21")
+
+[node name="Label" type="Label" parent="." unique_id=469100578]
+offset_right = 40.0
+offset_bottom = 23.0
