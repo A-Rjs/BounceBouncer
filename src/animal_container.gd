@@ -28,10 +28,21 @@ var rules = [
 
 var active_animal = null
 
+var day = 0
+var time_left = 30
+var rent = 30
 var money = 0
+var money_per_animal_correct = 5
+var money_per_animal_wrong = -15
 
 func _ready() -> void:
 	spawn_animal()
+
+func _process(delta: float) -> void:
+	time_left -= delta
+	if time_left < 0:
+		time_left = 0
+	update_time()
 
 func spawn_animal():
 	var scene = AnimalScene.instantiate()
@@ -53,14 +64,17 @@ func _on_in_button_button_down() -> void:
 	
 	if active_animal.should_be_allowed_in:
 		# correct
-		money += 1
+		money += money_per_animal_correct
 	else:
-		money -= 1
+		money += money_per_animal_wrong
 	
 	update_money()
 	
 	active_animal.enter_bar()
-	spawn_animal()
+	if time_left > 0:
+		spawn_animal()
+	else:
+		show_day_over_screen()
 
 func _on_out_button_button_down() -> void:
 	if active_animal == null:
@@ -68,14 +82,43 @@ func _on_out_button_button_down() -> void:
 	
 	if not active_animal.should_be_allowed_in:
 		# correct
-		money += 1
+		money += money_per_animal_correct
 	else:
-		money -= 1
+		money += money_per_animal_wrong
 	
 	update_money()
 	
 	active_animal.exit_bar()
-	spawn_animal()
+	if time_left > 0:
+		spawn_animal()
+	else:
+		show_day_over_screen()
+
+func show_day_over_screen():
+	$"../UI/DayOverScreen".visible = true
+	if money >= rent:
+		$"../UI/DayOverScreen/Label".text = "Day " + str(day + 1) + " Over"
+		$"../UI/DayOverScreen/Button".text = "Pay Rent ($" + str(rent) + ")"
+	else:
+		$"../UI/DayOverScreen/Label".text = "Game Over (Day " + str(day + 1) + ")"
+		$"../UI/DayOverScreen/Button".text = "Restart"
 
 func update_money():
 	$"../UI/Money".text = "Money: " + str(money)
+
+func update_time():
+	$"../UI/Time".text = "Time: " + str(round(time_left) as int) + "s"
+
+
+func _on_button_button_down() -> void:
+	if money < rent:
+		day = 0
+		money = 0
+		rent = 30
+	else:
+		money -= rent
+		day += 1
+	time_left = 30
+	update_time()
+	$"../UI/DayOverScreen".visible = false
+	spawn_animal()
