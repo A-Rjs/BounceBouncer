@@ -30,6 +30,13 @@ shape = SubResource("RectangleShape2D_kgxh6")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=888534565]
 
+[node name="Rules" type="Label" parent="UI" unique_id=1776160341]
+offset_left = 731.0
+offset_top = 21.0
+offset_right = 771.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 32
+
 [node name="InButton" type="Button" parent="UI" unique_id=817739765]
 offset_left = 196.0
 offset_top = 500.0
@@ -85,6 +92,36 @@ offset_bottom = 167.0
 theme_override_font_sizes/font_size = 64
 text = "Time Left: 30s"
 
+[node name="DayStartScreen" type="VBoxContainer" parent="UI" unique_id=64219858]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/DayStartScreen" unique_id=69767285]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Day 2"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/DayStartScreen" unique_id=1773718120]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Rent Increased to $30"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="UI/DayStartScreen" unique_id=974667955]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "START"
+
 [node name="DayOverScreen" type="VBoxContainer" parent="UI" unique_id=1405718473]
 visible = false
 anchors_preset = 8
@@ -114,4 +151,5 @@ text = "Pay Rent ($30)"
 [connection signal="body_shape_entered" from="UI/InButton/InArea" to="AnimalContainer" method="_on_in_area_body_shape_entered"]
 [connection signal="button_down" from="UI/OutButton" to="AnimalContainer" method="_on_out_button_button_down"]
 [connection signal="body_shape_entered" from="UI/OutButton/OutArea" to="AnimalContainer" method="_on_out_area_body_shape_entered"]
+[connection signal="button_down" from="UI/DayStartScreen/Button2" to="AnimalContainer" method="_on_button_button2_down"]
 [connection signal="button_down" from="UI/DayOverScreen/Button" to="AnimalContainer" method="_on_button_button_down"]
