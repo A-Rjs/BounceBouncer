@@ -39,9 +39,9 @@ offset_bottom = 66.0
 theme_override_font_sizes/font_size = 32
 
 [node name="InButton" type="Button" parent="UI" unique_id=817739765]
-offset_left = 196.0
+offset_left = 225.0
 offset_top = 500.0
-offset_right = 356.0
+offset_right = 385.0
 offset_bottom = 596.0
 theme_override_font_sizes/font_size = 64
 text = "IN"
@@ -60,10 +60,10 @@ position = Vector2(81.5, 46.5)
 shape = SubResource("RectangleShape2D_j232s")
 
 [node name="OutButton" type="Button" parent="UI" unique_id=1753711058]
-offset_left = 653.0
-offset_top = 499.0
-offset_right = 795.0
-offset_bottom = 595.0
+offset_left = 775.0
+offset_top = 500.0
+offset_right = 917.0
+offset_bottom = 596.0
 theme_override_font_sizes/font_size = 64
 text = "OUT"
 
