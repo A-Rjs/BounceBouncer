@@ -149,5 +149,5 @@ func _on_button_button_down() -> void:
 func _on_button2_button_down() -> void:
 	$"../UI/DayStartScreen".visible = false
 	spawn_animal()
-	time_left = 5
+	time_left = 30
 	update_time()
