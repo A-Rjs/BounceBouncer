@@ -14,6 +14,8 @@ var species_data = {
 
 var hats = ["none", "red", "blue"]
 
+var fashions = ["normal", "hime", "punk"]
+
 var rules = []
 # types of rules:
 # ALLOW PREY, DISALLOW PREDATORS
@@ -29,6 +31,136 @@ var rent = 0
 var money = 0
 var money_per_animal_correct = 5
 var money_per_animal_wrong = -15
+var ruleset = [
+	[
+		{
+			"rule":"allow", 
+			"type":"prey",
+			"label" : "prey night"
+		}, 
+		{
+			"rule":"disallow",
+			"type":"predator"
+		}
+	],
+	[
+		{
+			"rule":"allow", 
+			"type":"predator",
+			"label" : "predator night"
+		}, 
+		{
+			"rule":"disallow",
+			"type":"prey"
+		}
+	],
+	[
+		{
+			"rule":"allow", 
+			"hat":"red",
+			"label" : "red night"
+		}, 
+		{
+			"rule":"disallow",
+			"hat":"none"
+		}, 
+		{
+			"rule":"disallow",
+			"hat":"blue"
+		}
+	],
+	[
+		{
+			"rule":"disallow", 
+			"hat":"red",
+			"label" : "no hats night"
+		}, 
+		{
+			"rule":"allow",
+			"hat":"none"
+		}, 
+		{
+			"rule":"disallow",
+			"hat":"blue"
+		}
+	],
+	[
+		{
+			"rule":"disallow", 
+			"hat":"red", 
+			"label" : "blue night"
+		}, 
+		{
+			"rule":"disallow",
+			"hat":"none"
+		}, 
+		{
+			"rule":"allow",
+			"hat":"blue"
+		}
+	],
+	[
+		{
+			"rule":"allow", 
+			"hat":"red",
+			"label" : "all hats night"
+		}, 
+		{
+			"rule":"disallow",
+			"hat":"none"
+		}, 
+		{
+			"rule":"allow",
+			"hat":"blue"
+		}
+	],
+	[
+		{
+			"rule":"allow", 
+			"fashion":"punk",
+			"label" : "punk night"
+		}, 
+		{
+			"rule":"disallow",
+			"fashion":"hime"
+		}, 
+		{
+			"rule":"disallow",
+			"fashion":"normal"
+		}
+	],
+	[
+		{
+			"rule":"disallow", 
+			"fashion":"punk",
+			"label" : "hime night"
+		}, 
+		{
+			"rule":"allow",
+			"fashion":"hime"
+		}, 
+		{
+			"rule":"disallow",
+			"fashion":"normal"
+		}
+	],
+	[
+		{
+			"rule":"allow", 
+			"fashion":"punk", 
+			"label" : "alt (punk/hime) night"
+		}, 
+		{
+			"rule":"allow",
+			"fashion":"hime"
+		}, 
+		{
+			"rule":"disallow",
+			"fashion":"normal"
+		}
+	],
+	
+]
 
 func _ready() -> void:
 	start_game()
@@ -36,20 +168,35 @@ func start_game():
 	day = 0
 	rent = 30
 	money = 0
-	rules = [
-		{
-			"rule": "allow",
-			"type": "prey",
-		},
-		{
-			"rule": "disallow",
-			"type": "predators",
-		}
-	]
+	#rules = [
+		#{
+			#"rule": "allow",
+			#"type": "prey",
+		#},
+		#{
+			#"rule": "disallow",
+			#"type": "predators",
+		#},
+		#{
+			#"rule": "dissallow",
+			#"hat" : "blue"
+		#},
+		#{
+			#"rule": "dissallow",
+			#"hat" : "red"
+		#}
+		#,
+		#{
+			#"rule": "allow",
+			#"hat" : "none"
+		#}
+	#]
+	$"../UI/Rules".visible = false
 	start_day()
 func start_day():
 	if day != 0:
 		rent += 5
+	rules = ruleset.pick_random()
 	update_money()
 	update_time()
 	update_rules()
@@ -67,15 +214,18 @@ func spawn_animal():
 	var scene = AnimalScene.instantiate()
 	var species = species_data.keys()[randi_range(0, species_data.keys().size() - 1)]
 	var hat = hats[randi_range(0, hats.size() - 1)]
+	var fashion = fashions[randi_range(0, hats.size() - 1)]
 	var should_be_allowed_in = false
 	
 	for rule in rules:
-		if rule.type != null and rule.type == species_data[species].type:
+		if rule.has('type') and rule.type != null and rule.type == species_data[species].type:
 			should_be_allowed_in = rule.rule == "allow"
-		if rule.type != null and rule.hat == hat:
+		if rule.has('hat') and rule.hat != null and rule.hat == hat:
+			should_be_allowed_in = rule.rule == "allow"
+		if rule.has('fashion') and rule.fashion != null and rule.fashion == fashion:
 			should_be_allowed_in = rule.rule == "allow"
 	
-	scene.setup(species, hat, should_be_allowed_in)
+	scene.setup(species, hat, fashion, should_be_allowed_in)
 	add_child(scene)
 	
 	active_animal = scene
@@ -145,12 +295,18 @@ func update_time():
 	$"../UI/Time".text = "Time: " + str(round(time_left) as int) + "s"
 
 func update_rules():
-	var rules_text = "RULES:"
-	for rule in rules:
-		rules_text += "\n"
-		rules_text += rule.rule.to_upper() + " "
-		if rule.type != null:
-			rules_text += rule.type.to_upper()
+	var rules_text = "RULE: "
+	if rules[0].label != null:
+		rules_text += rules[0].label.to_upper()
+	#for rule in rules:
+		#rules_text += "\n"
+		#rules_text += rule.rule.to_upper() + " "
+		#if rule.has('type') and rule.type!= null:
+			#rules_text += rule.type.to_upper()
+		#if rule.has('hat') and rule.hat!= null:
+			#rules_text += rule.hat.to_upper()
+		#if rule.has('fashion') and rule.fashion!= null:
+			#rules_text += rule.fashion.to_upper()
 	$"../UI/Rules".text = rules_text
 
 
@@ -173,6 +329,7 @@ func _on_out_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_ind
 
 func _on_button_button2_down() -> void:
 	$"../UI/DayStartScreen".visible = false
+	$"../UI/Rules".visible = true
 	spawn_animal()
 	spawn_player()
 	time_left = 35
