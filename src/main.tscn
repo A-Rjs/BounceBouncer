@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://femsgk4xcyjs"]
 
 [ext_resource type="Script" uid="uid://je0udwi3t65c" path="res://src/animal_container.gd" id="1_gh0ne"]
+[ext_resource type="AudioStream" uid="uid://4bhi5bmfvshm" path="res://assets/Bounce Down the Bunburrows.mp3" id="2_gh0ne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgxh6"]
 size = Vector2(1169, 20)
@@ -146,6 +147,10 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Pay Rent ($30)"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=321013260]
+stream = ExtResource("2_gh0ne")
+autoplay = true
 
 [connection signal="button_down" from="UI/InButton" to="AnimalContainer" method="_on_in_button_button_down"]
 [connection signal="body_shape_entered" from="UI/InButton/InArea" to="AnimalContainer" method="_on_in_area_body_shape_entered"]

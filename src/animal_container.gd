@@ -52,6 +52,11 @@ func start_day():
 		rent += 5
 	update_money()
 	update_time()
+	if day == 1:
+		rules.push_back({
+			"rule": "disallow",
+			"hat": "red"
+		})
 	update_rules()
 	$"../UI/DayOverScreen".visible = false
 	$"../UI/DayStartScreen".visible = true
@@ -70,9 +75,9 @@ func spawn_animal():
 	var should_be_allowed_in = false
 	
 	for rule in rules:
-		if rule.type != null and rule.type == species_data[species].type:
+		if "type" in rule and rule.type == species_data[species].type:
 			should_be_allowed_in = rule.rule == "allow"
-		if rule.type != null and rule.hat == hat:
+		if "hat" in rule and rule.hat == hat:
 			should_be_allowed_in = rule.rule == "allow"
 	
 	scene.setup(species, hat, should_be_allowed_in)
@@ -140,7 +145,7 @@ func show_day_over_screen():
 		$"../UI/DayOverScreen/Button".text = "Restart"
 		plr.die()
 func update_money():
-	$"../UI/Money".text = "Money: " + str(money) + "€"
+	$"../UI/Money".text = "Money: $" + str(money)
 func update_time():
 	$"../UI/Time".text = "Time: " + str(round(time_left) as int) + "s"
 
@@ -149,8 +154,10 @@ func update_rules():
 	for rule in rules:
 		rules_text += "\n"
 		rules_text += rule.rule.to_upper() + " "
-		if rule.type != null:
+		if "type" in rule:
 			rules_text += rule.type.to_upper()
+		if "hat" in rule:
+			rules_text += rule.hat.to_upper() + " HATS"
 	$"../UI/Rules".text = rules_text
 
 
