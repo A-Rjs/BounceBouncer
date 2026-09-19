@@ -6,15 +6,17 @@ var target_loc = Vector2(0, 0)
 
 var species = "bunny"
 var hat = "none"
+var fashion = "normal"
 
 var should_be_allowed_in = false
 
-func setup(_species, _hat, _should_be_allowed_in) -> void:
+func setup(_species, _hat, _fashion, _should_be_allowed_in) -> void:
 	species = _species
 	hat = _hat
+	fashion = _fashion
 	should_be_allowed_in = _should_be_allowed_in
 	
-	$Label.text = "species: " + species + ", should_be_allowed_in: " + str(should_be_allowed_in)
+	$Label.text = "s-" + species + " h-" + hat + " f-" + fashion + " in-" + str(should_be_allowed_in)
 	
 	move_onto_screen()
 
