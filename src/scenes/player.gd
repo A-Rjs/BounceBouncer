@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
+var sprite : Sprite2D = null
 
 const SPEED = 600.0
-const JUMP_VELOCITY = -400.0
 const BOUNCE_VELOCITY = -840.0
 
+func _ready() -> void:
+	sprite = $"Sprite2D"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -16,7 +18,15 @@ func _physics_process(delta: float) -> void:
 		#velocity.y = JUMP_VELOCITY
 	if is_on_floor():
 		velocity.y = BOUNCE_VELOCITY
-		
+	
+	if velocity.y >= 150:
+		sprite.region_rect.position.x = 800
+	elif velocity.y >= -150:
+		sprite.region_rect.position.x = 600
+	elif velocity.y >= -400:
+		sprite.region_rect.position.x = 400
+	else:
+		sprite.region_rect.position.x = 200
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
