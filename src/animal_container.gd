@@ -12,6 +12,8 @@ var species_data = {
 	},
 }
 
+var hats = ["none", "red", "blue"]
+
 var rules = []
 # types of rules:
 # ALLOW PREY, DISALLOW PREDATORS
@@ -64,13 +66,16 @@ func _process(delta: float) -> void:
 func spawn_animal():
 	var scene = AnimalScene.instantiate()
 	var species = species_data.keys()[randi_range(0, species_data.keys().size() - 1)]
+	var hat = hats[randi_range(0, hats.size() - 1)]
 	var should_be_allowed_in = false
 	
 	for rule in rules:
 		if rule.type != null and rule.type == species_data[species].type:
 			should_be_allowed_in = rule.rule == "allow"
+		if rule.type != null and rule.hat == hat:
+			should_be_allowed_in = rule.rule == "allow"
 	
-	scene.setup(species, should_be_allowed_in)
+	scene.setup(species, hat, should_be_allowed_in)
 	add_child(scene)
 	
 	active_animal = scene
