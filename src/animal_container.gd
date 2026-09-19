@@ -1,5 +1,6 @@
 extends Node2D
 
+var Player = preload("res://src/scenes/player.tscn")
 var AnimalScene = preload("res://src/scenes/animal.tscn")
 
 var species_data = {
@@ -18,6 +19,7 @@ var rules = []
 # but ALLOW X (red hAts)
 
 var active_animal = null
+var plr = null
 
 var day = 0
 var time_left = 0
@@ -28,7 +30,6 @@ var money_per_animal_wrong = -15
 
 func _ready() -> void:
 	start_game()
-
 func start_game():
 	day = 0
 	rent = 30
@@ -44,7 +45,6 @@ func start_game():
 		}
 	]
 	start_day()
-
 func start_day():
 	if day != 0:
 		rent += 5
@@ -55,7 +55,6 @@ func start_day():
 	$"../UI/DayStartScreen".visible = true
 	$"../UI/DayStartScreen/Label".text = "Day " + str(day + 1)
 	$"../UI/DayStartScreen/Label2".text = "Rent Increased to $" + str(rent)
-
 func _process(delta: float) -> void:
 	time_left -= delta
 	if time_left < 0:
@@ -76,25 +75,12 @@ func spawn_animal():
 	
 	active_animal = scene
 
-func _on_in_button_button_down() -> void:
-	if active_animal == null:
-		return
+func spawn_player():
+	var player = Player.instantiate()
+	add_child(player)
+	plr = player
 	
-	if active_animal.should_be_allowed_in:
-		# correct
-		money += money_per_animal_correct
-	else:
-		money += money_per_animal_wrong
-	
-	update_money()
-	
-	active_animal.enter_bar()
-	if time_left > 0:
-		spawn_animal()
-	else:
-		show_day_over_screen()
-
-func _on_out_button_button_down() -> void:
+func press_out():
 	if active_animal == null:
 		return
 	
@@ -112,18 +98,44 @@ func _on_out_button_button_down() -> void:
 	else:
 		show_day_over_screen()
 
+func press_in():
+	if active_animal == null:
+		return
+	
+	if active_animal.should_be_allowed_in:
+		# correct
+		money += money_per_animal_correct
+	else:
+		money += money_per_animal_wrong
+	
+	update_money()
+	
+	active_animal.enter_bar()
+	if time_left > 0:
+		spawn_animal()
+	else:
+		show_day_over_screen()
+
+func _on_in_button_button_down() -> void:
+	press_in()
+	
+func _on_out_button_button_down() -> void:
+	press_out()
+	
+
+
 func show_day_over_screen():
 	$"../UI/DayOverScreen".visible = true
 	if money >= rent:
 		$"../UI/DayOverScreen/Label".text = "Day " + str(day + 1) + " Over"
 		$"../UI/DayOverScreen/Button".text = "Pay Rent ($" + str(rent) + ")"
+		plr.die()
 	else:
 		$"../UI/DayOverScreen/Label".text = "Game Over (Day " + str(day + 1) + ")"
 		$"../UI/DayOverScreen/Button".text = "Restart"
-
+		plr.die()
 func update_money():
-	$"../UI/Money".text = "Money: " + str(money)
-
+	$"../UI/Money".text = "Money: " + str(money) + "€"
 func update_time():
 	$"../UI/Time".text = "Time: " + str(round(time_left) as int) + "s"
 
@@ -146,8 +158,17 @@ func _on_button_button_down() -> void:
 		start_day()
 
 
-func _on_button2_button_down() -> void:
+func _on_in_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	press_in()
+
+
+func _on_out_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	press_out()
+
+
+func _on_button_button2_down() -> void:
 	$"../UI/DayStartScreen".visible = false
 	spawn_animal()
-	time_left = 30
+	spawn_player()
+	time_left = 35
 	update_time()
