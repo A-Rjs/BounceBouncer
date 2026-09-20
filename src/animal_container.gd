@@ -4,6 +4,7 @@ var Player = preload("res://src/scenes/player.tscn")
 var AnimalScene = preload("res://src/scenes/animal.tscn")
 @onready var OBtn : Sprite2D = $"../UI/OuSpr"
 @onready var IBtn : Sprite2D = $"../UI/InSpr"
+@onready var ruIcon : Sprite2D = $"../UI/RuleIcon"
 @export var correct_sfx: AudioStreamPlayer
 @export var incorrect_sfx: AudioStreamPlayer
 
@@ -43,7 +44,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"type":"prey",
-			"label" : "PREY\nONLY"
+			"label" : "prey"
 		}, 
 		{
 			"rule":"disallow",
@@ -54,7 +55,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"type":"predators",
-			"label" : "PREDATORS\nONLY"
+			"label" : "pred"
 		}, 
 		{
 			"rule":"disallow",
@@ -65,7 +66,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"hat":"red",
-			"label" : "REDCAPS\nONLY"
+			"label" : "redh"
 		}, 
 		{
 			"rule":"disallow",
@@ -80,7 +81,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"hat":"red",
-			"label" : "NO\nHATS"
+			"label" : "nonh"
 		}, 
 		{
 			"rule":"allow",
@@ -95,7 +96,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"hat":"red", 
-			"label" : "BLUECAPS\nONly"
+			"label" : "blueh"
 		}, 
 		{
 			"rule":"disallow",
@@ -110,7 +111,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"hat":"red",
-			"label" : "HATS\nREQUIRED"
+			"label" : "allh"
 		}, 
 		{
 			"rule":"disallow",
@@ -125,7 +126,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"fashion":"punk",
-			"label" : "punks\nonly"
+			"label" : "punk"
 		}, 
 		{
 			"rule":"disallow",
@@ -140,7 +141,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"fashion":"punk",
-			"label" : "hime\nonly"
+			"label" : "hime"
 		}, 
 		{
 			"rule":"allow",
@@ -155,7 +156,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"fashion":"punk", 
-			"label" : "no normies\nallowed"
+			"label" : "altn"
 		}, 
 		{
 			"rule":"allow",
@@ -305,9 +306,8 @@ func update_time():
 	$"../UI/Time".text = "" + str(round(time_left) as int) + "s"
 
 func update_rules():
-	var rules_text = ""
 	if rules[0].label != null:
-		rules_text += rules[0].label.to_upper()
+		ruIcon.texture = load("res://assets/art/icons/" + rules[0].label + "_icon.png")
 	#for rule in rules:
 		#rules_text += "\n"
 		#rules_text += rule.rule.to_upper() + " "
@@ -317,7 +317,7 @@ func update_rules():
 			#rules_text += rule.hat.to_upper()
 		#if rule.has('fashion') and rule.fashion!= null:
 			#rules_text += rule.fashion.to_upper()
-	$"../UI/Rules".text = rules_text
+	
 
 
 func _on_button_button_down() -> void:

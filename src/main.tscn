@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://clnyxydvu2f0l" path="res://assets/art/in_up.png" id="3_rlaii"]
 [ext_resource type="AudioStream" uid="uid://7l13qhxq571l" path="res://assets/sounds/floraphonic-coin-payout-27-213592.mp3" id="4_3cfgd"]
 [ext_resource type="Texture2D" uid="uid://dycv6uvojwyvu" path="res://assets/art/out_up.png" id="4_5mrjc"]
+[ext_resource type="Texture2D" uid="uid://dijglms54lida" path="res://assets/art/icons/allh_icon.png" id="5_d3u4l"]
 [ext_resource type="AudioStream" uid="uid://cjqevxxta4nwd" path="res://assets/sounds/lesiakower-error-mistake-sound-effect-incorrect-answer-437420.mp3" id="5_fyndt"]
 [ext_resource type="Texture2D" uid="uid://duje0dksvthj4" path="res://assets/art/ui/ui tracker.png" id="6_kf8lf"]
 [ext_resource type="Texture2D" uid="uid://cjc78vm8uqr1r" path="res://assets/art/ui/btn.png" id="7_mgm53"]
@@ -152,6 +153,11 @@ shape = SubResource("RectangleShape2D_ptcbm")
 position = Vector2(1026, 184.00002)
 scale = Vector2(0.7941666, 0.7075)
 texture = ExtResource("3_5mrjc")
+
+[node name="RuleIcon" type="Sprite2D" parent="UI" unique_id=1787516588]
+position = Vector2(1052.0001, 174)
+scale = Vector2(0.79416656, 0.7074999)
+texture = ExtResource("5_d3u4l")
 
 [node name="Rules" type="Label" parent="UI" unique_id=1776160341]
 offset_left = 987.0
