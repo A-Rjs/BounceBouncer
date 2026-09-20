@@ -208,8 +208,8 @@ func start_day():
 	update_rules()
 	$"../UI/DayOverScreen".visible = false
 	$"../UI/DayStartScreen".visible = true
-	$"../UI/DayStartScreen/Label".text = "Day " + str(day + 1)
-	$"../UI/DayStartScreen/Label2".text = "Rent Increased to $" + str(rent)
+	$"../UI/DayStartScreen/Label".text = "DAY " + str(day + 1)
+	$"../UI/DayStartScreen/Label2".text = "RENT: $" + str(rent)
 func _process(delta: float) -> void:
 	time_left -= delta
 	if time_left < 0:
@@ -291,12 +291,12 @@ func press_in():
 func show_day_over_screen():
 	$"../UI/DayOverScreen".visible = true
 	if money >= rent:
-		$"../UI/DayOverScreen/Label".text = "Day " + str(day + 1) + " Over"
-		$"../UI/DayOverScreen/Button".text = "Pay Rent ($" + str(rent) + ")"
+		$"../UI/DayOverScreen/Label".text = "Day " + str(day + 1)+ "\nOver"
+		$"../UI/DayOverScreen/Button/Sprite2D/Label".text = "Pay Up: $" + str(rent) 
 		plr.die()
 	else:
-		$"../UI/DayOverScreen/Label".text = "Game Over (Day " + str(day + 1) + ")"
-		$"../UI/DayOverScreen/Button".text = "Restart"
+		$"../UI/DayOverScreen/Label".text = "Game\n Over"
+		$"../UI/DayOverScreen/Button".text = "X"
 		plr.die()
 func update_money():
 	$"../UI/Money".text = "$" + str(money)
@@ -341,5 +341,5 @@ func _on_button_button2_down() -> void:
 	$"../UI/Rules".visible = true
 	spawn_animal()
 	spawn_player()
-	time_left = 35
+	time_left = 30
 	update_time()
