@@ -40,13 +40,13 @@ var ruleset = [
 		}, 
 		{
 			"rule":"disallow",
-			"type":"predator"
+			"type":"predators"
 		}
 	],
 	[
 		{
 			"rule":"allow", 
-			"type":"predator",
+			"type":"predators",
 			"label" : "predator night"
 		}, 
 		{
@@ -148,7 +148,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"fashion":"punk", 
-			"label" : "alt (punk/hime) night"
+			"label" : "alt night"
 		}, 
 		{
 			"rule":"allow",
@@ -199,11 +199,6 @@ func start_day():
 	rules = ruleset.pick_random()
 	update_money()
 	update_time()
-	if day == 1:
-		rules.push_back({
-			"rule": "disallow",
-			"hat": "red"
-		})
 	update_rules()
 	$"../UI/DayOverScreen".visible = false
 	$"../UI/DayStartScreen".visible = true
