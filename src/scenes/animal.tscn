@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cxelkq58pofc8" path="res://assets/art/hat/blue_hat.png" id="5_ffp65"]
 
 [node name="Animal" type="Sprite2D" unique_id=524858043]
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_wtwr2")
 script = ExtResource("1_l3y21")
 

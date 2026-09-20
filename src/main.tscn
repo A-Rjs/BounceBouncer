@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cjc78vm8uqr1r" path="res://assets/art/ui/btn.png" id="7_mgm53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgxh6"]
-size = Vector2(1173, 96.5)
+size = Vector2(1173, 116.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptcbm"]
 size = Vector2(20, 553)
@@ -44,11 +44,11 @@ incorrect_sfx = NodePath("../incorrectsound")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1873258382]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1355678466]
-position = Vector2(574, 609.25)
+position = Vector2(574, 599.25)
 shape = SubResource("RectangleShape2D_kgxh6")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1245713654]
-position = Vector2(824.12494, 352)
+position = Vector2(824.00006, 319)
 scale = Vector2(1.319922, 1.4773147)
 texture = ExtResource("2_5q4o7")
 
@@ -78,8 +78,8 @@ theme_override_constants/outline_size = 9
 theme_override_font_sizes/font_size = 27
 
 [node name="InButton" type="Button" parent="UI" unique_id=817739765]
-offset_left = 265.0
-offset_top = 500.0
+offset_left = 235.0
+offset_top = 478.0
 offset_right = 354.0
 offset_bottom = 596.0
 theme_override_font_sizes/font_size = 64
@@ -104,7 +104,7 @@ shape = SubResource("RectangleShape2D_j232s")
 
 [node name="OutButton" type="Button" parent="UI" unique_id=1753711058]
 offset_left = 823.0
-offset_top = 501.0
+offset_top = 485.0
 offset_right = 917.0
 offset_bottom = 596.0
 theme_override_font_sizes/font_size = 64

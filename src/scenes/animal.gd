@@ -32,20 +32,20 @@ func _process(delta: float) -> void:
 				queue_free()
 
 func move_onto_screen():
-	position = Vector2(1250, 322)
+	position = Vector2(1250, 292)
 	move_to_target = true
-	target_loc = Vector2(540, 322)
+	target_loc = Vector2(590, 292)
 	leaving = false
 
 func move_enter_bar():
 	move_to_target = true
-	target_loc = Vector2(-240, 322)
+	target_loc = Vector2(-240, 292)
 	leaving = true
 
 func move_exit_bar():
 	$bod.texture = load("res://assets/art/species/" + species + "_species_out.png")
 	move_to_target = true
-	target_loc = Vector2(540, 940)
+	target_loc = Vector2(540, 645)
 	leaving = true
 
 func enter_bar():
