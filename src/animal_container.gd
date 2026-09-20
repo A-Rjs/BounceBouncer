@@ -239,7 +239,7 @@ func spawn_player():
 	var player = Player.instantiate()
 	add_child(player)
 	plr = player
-	plr.global_position = Vector2(500,0)
+	plr.global_position = Vector2(1152/2,0)
 	
 func press_out():
 	if active_animal == null:
