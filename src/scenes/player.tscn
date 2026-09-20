@@ -15,7 +15,6 @@ script = ExtResource("1_v4rts")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1343153897]
 z_index = 5
-position = Vector2(4.8571625, -0.2142868)
 scale = Vector2(0.33857146, 0.39714286)
 texture = ExtResource("2_v4rts")
 region_enabled = true
