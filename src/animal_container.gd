@@ -42,7 +42,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"type":"prey",
-			"label" : "prey \n on the \n prowl!"
+			"label" : "PREY\nONLY"
 		}, 
 		{
 			"rule":"disallow",
@@ -53,7 +53,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"type":"predators",
-			"label" : "predators \n on the \n prowl!"
+			"label" : "PREDATORS\nONLY"
 		}, 
 		{
 			"rule":"disallow",
@@ -64,7 +64,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"hat":"red",
-			"label" : "redcaps \n night"
+			"label" : "REDCAPS\nONLY"
 		}, 
 		{
 			"rule":"disallow",
@@ -79,7 +79,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"hat":"red",
-			"label" : "bare your \n hair!"
+			"label" : "NO\nHATS"
 		}, 
 		{
 			"rule":"allow",
@@ -94,7 +94,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"hat":"red", 
-			"label" : "bluecpas \n night"
+			"label" : "bluecpas\nONly"
 		}, 
 		{
 			"rule":"disallow",
@@ -109,7 +109,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"hat":"red",
-			"label" : "all hats\n night!"
+			"label" : "HATS\nREQUIRED"
 		}, 
 		{
 			"rule":"disallow",
@@ -124,7 +124,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"fashion":"punk",
-			"label" : "punk \n night"
+			"label" : "punks\nonly"
 		}, 
 		{
 			"rule":"disallow",
@@ -139,7 +139,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"fashion":"punk",
-			"label" : "princess \n only!"
+			"label" : "hime\nonly"
 		}, 
 		{
 			"rule":"allow",
@@ -154,7 +154,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"fashion":"punk", 
-			"label" : "no normies \n allowed"
+			"label" : "no normies\nallowed"
 		}, 
 		{
 			"rule":"allow",

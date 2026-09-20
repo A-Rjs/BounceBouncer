@@ -42,8 +42,8 @@ position = Vector2(574, 609.25)
 shape = SubResource("RectangleShape2D_kgxh6")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1245713654]
-position = Vector2(432, 431)
-scale = Vector2(0.8572917, 0.8351851)
+position = Vector2(824.12494, 352)
+scale = Vector2(1.319922, 1.4773147)
 texture = ExtResource("2_5q4o7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1537546071]
@@ -57,16 +57,20 @@ shape = SubResource("RectangleShape2D_ptcbm")
 [node name="UI" type="CanvasLayer" parent="." unique_id=888534565]
 
 [node name="Ruleback" type="Sprite2D" parent="UI" unique_id=1166999842]
-position = Vector2(936.00006, 155.00002)
-scale = Vector2(0.7216666, 0.6483334)
+position = Vector2(1026, 184.00002)
+scale = Vector2(0.7941666, 0.7075)
 texture = ExtResource("3_5mrjc")
 
 [node name="Rules" type="Label" parent="UI" unique_id=1776160341]
-offset_left = 869.0
-offset_top = 111.0
-offset_right = 909.0
-offset_bottom = 156.0
-theme_override_font_sizes/font_size = 32
+offset_left = 971.0
+offset_top = 119.0
+offset_right = 1011.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0.9529412, 0.84705883, 0.4117647, 1)
+theme_override_colors/font_shadow_color = Color(0.80784315, 0.6666667, 0.32941177, 1)
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_font_sizes/font_size = 27
 
 [node name="InButton" type="Button" parent="UI" unique_id=817739765]
 offset_left = 265.0
@@ -118,33 +122,33 @@ position = Vector2(60, 7.25)
 shape = SubResource("RectangleShape2D_1fjo3")
 
 [node name="TimeAndMoney" type="Sprite2D" parent="UI" unique_id=2094095184]
-position = Vector2(171, 149)
-scale = Vector2(1.1408333, 0.9875)
+position = Vector2(150.4375, 132.9375)
+scale = Vector2(1.00375, 0.88041663)
 texture = ExtResource("6_kf8lf")
 
 [node name="Time" type="Label" parent="UI" unique_id=1623120510]
-offset_left = 65.0
-offset_top = 52.0
-offset_right = 162.0
-offset_bottom = 122.0
+offset_left = 62.0
+offset_top = 51.0
+offset_right = 159.0
+offset_bottom = 121.0
 theme_override_colors/font_color = Color(0.9137255, 0.40784314, 0.4117647, 1)
 theme_override_colors/font_shadow_color = Color(0.78039217, 0.14509805, 0.32156864, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 9
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 33
 text = " 30s"
 
 [node name="Money" type="Label" parent="UI" unique_id=441837531]
-offset_left = 20.0
-offset_top = 159.0
-offset_right = 300.0
-offset_bottom = 247.0
+offset_left = 21.0
+offset_top = 138.0
+offset_right = 301.0
+offset_bottom = 226.0
 theme_override_colors/font_color = Color(0.9490196, 0.83137256, 0.3882353, 1)
 theme_override_colors/font_shadow_color = Color(0.78039217, 0.52156866, 0.24313726, 1)
 theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 9
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 33
 text = "$0"
 
 [node name="DayStartScreen" type="VBoxContainer" parent="UI" unique_id=64219858]
