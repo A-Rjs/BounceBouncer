@@ -3,6 +3,9 @@ extends Node2D
 var Player = preload("res://src/scenes/player.tscn")
 var AnimalScene = preload("res://src/scenes/animal.tscn")
 
+@export var correct_sfx: AudioStreamPlayer
+@export var incorrect_sfx: AudioStreamPlayer
+
 var species_data = {
 	"bunny": {
 		"type": "prey"
@@ -243,8 +246,10 @@ func press_out():
 	if not active_animal.should_be_allowed_in:
 		# correct
 		money += money_per_animal_correct
+		correct_sfx.play()
 	else:
 		money += money_per_animal_wrong
+		incorrect_sfx.play()
 	
 	update_money()
 	
@@ -261,8 +266,10 @@ func press_in():
 	if active_animal.should_be_allowed_in:
 		# correct
 		money += money_per_animal_correct
+		correct_sfx.play()
 	else:
 		money += money_per_animal_wrong
+		incorrect_sfx.play()
 	
 	update_money()
 	
