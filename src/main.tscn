@@ -32,6 +32,63 @@ size = Vector2(257, 166)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fjo3"]
 size = Vector2(254, 188.5)
 
+[sub_resource type="FontFile" id="FontFile_hwyk6"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/60/0/ascent = 0.0
+cache/0/60/0/descent = 0.0
+cache/0/60/0/underline_position = 0.0
+cache/0/60/0/underline_thickness = 0.0
+cache/0/60/0/scale = 1.0
+cache/0/333/0/ascent = 0.0
+cache/0/333/0/descent = 0.0
+cache/0/333/0/underline_position = 0.0
+cache/0/333/0/underline_thickness = 0.0
+cache/0/333/0/scale = 1.0
+cache/0/33/0/ascent = 0.0
+cache/0/33/0/descent = 0.0
+cache/0/33/0/underline_position = 0.0
+cache/0/33/0/underline_thickness = 0.0
+cache/0/33/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_v4rts"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/60/0/ascent = 0.0
+cache/0/60/0/descent = 0.0
+cache/0/60/0/underline_position = 0.0
+cache/0/60/0/underline_thickness = 0.0
+cache/0/60/0/scale = 1.0
+cache/0/33/0/ascent = 0.0
+cache/0/33/0/descent = 0.0
+cache/0/33/0/underline_position = 0.0
+cache/0/33/0/underline_thickness = 0.0
+cache/0/33/0/scale = 1.0
+
 [sub_resource type="FontFile" id="FontFile_tca1p"]
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
@@ -61,7 +118,7 @@ cache/0/33/0/scale = 1.0
 [node name="Main" type="Node2D" unique_id=843306803]
 
 [node name="bgd" type="Sprite2D" parent="." unique_id=1538165359]
-position = Vector2(580, 358)
+position = Vector2(579.99994, 344.00003)
 scale = Vector2(0.6486112, 0.6486111)
 texture = ExtResource("1_uewes")
 
@@ -165,25 +222,27 @@ scale = Vector2(1.00375, 0.88041663)
 texture = ExtResource("6_kf8lf")
 
 [node name="Time" type="Label" parent="UI" unique_id=1623120510]
-offset_left = 14.0
-offset_top = 51.0
-offset_right = 111.0
-offset_bottom = 121.0
+offset_left = 21.0
+offset_top = 46.0
+offset_right = 118.0
+offset_bottom = 116.0
 theme_override_colors/font_color = Color(0.9137255, 0.40784314, 0.4117647, 1)
 theme_override_colors/font_shadow_color = Color(0.78039217, 0.14509805, 0.32156864, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("FontFile_hwyk6")
 theme_override_font_sizes/font_size = 33
 text = " 30s"
 
 [node name="Money" type="Label" parent="UI" unique_id=441837531]
-offset_left = 21.0
-offset_top = 138.0
-offset_right = 301.0
-offset_bottom = 226.0
+offset_left = 19.0
+offset_top = 136.0
+offset_right = 299.0
+offset_bottom = 224.0
 theme_override_colors/font_color = Color(0.9490196, 0.83137256, 0.3882353, 1)
 theme_override_colors/font_shadow_color = Color(0.78039217, 0.52156866, 0.24313726, 1)
 theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("FontFile_v4rts")
 theme_override_font_sizes/font_size = 33
 text = "$0"
 
