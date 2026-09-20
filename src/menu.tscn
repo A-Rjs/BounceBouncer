@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bslwkw6gqycms"]
+
+[ext_resource type="Script" uid="uid://btrcnmlmm7fs7" path="res://main_menu_start_button.gd" id="1_t5igk"]
+
+[node name="menu" type="Node2D" unique_id=272536434]
+
+[node name="StartButton" type="Button" parent="." unique_id=1589354978]
+offset_left = 326.0
+offset_top = 274.0
+offset_right = 826.0
+offset_bottom = 374.0
+theme_override_font_sizes/font_size = 40
+text = "Start"
+script = ExtResource("1_t5igk")
