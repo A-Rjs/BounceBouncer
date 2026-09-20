@@ -155,7 +155,7 @@ scale = Vector2(0.7941666, 0.7075)
 texture = ExtResource("3_5mrjc")
 
 [node name="RuleIcon" type="Sprite2D" parent="UI" unique_id=1787516588]
-position = Vector2(1066, 172.00002)
+position = Vector2(1052.0001, 174)
 scale = Vector2(0.65, 0.579)
 texture = ExtResource("5_d3u4l")
 
@@ -303,9 +303,9 @@ texture = ExtResource("7_mgm53")
 
 [node name="Label" type="Label" parent="UI/DayStartScreen/Button2/Sprite2D" unique_id=2108799610]
 offset_left = -92.68294
-offset_top = -39.444458
+offset_top = -38.333347
 offset_right = 64.21477
-offset_bottom = 11.555542
+offset_bottom = 12.666653
 offset_transform_enabled = true
 offset_transform_rotation = -0.20943952
 theme_override_colors/font_color = Color(0.972549, 0.85490197, 0.4117647, 1)
@@ -317,6 +317,7 @@ theme_override_font_sizes/font_size = 48
 text = "S T A R T"
 
 [node name="DayOverScreen" type="VBoxContainer" parent="UI" unique_id=1405718473]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
@@ -348,8 +349,8 @@ theme_override_font_sizes/font_size = 64
 text = "X"
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/DayOverScreen/Button" unique_id=417192355]
-position = Vector2(153.94405, 58.5)
-scale = Vector2(1.0966668, 0.9)
+position = Vector2(112.44403, 58.5)
+scale = Vector2(0.82, 0.9)
 texture = ExtResource("7_mgm53")
 
 [node name="Label" type="Label" parent="UI/DayOverScreen/Button/Sprite2D" unique_id=1539337760]

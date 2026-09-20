@@ -297,7 +297,7 @@ func show_day_over_screen():
 		$"../UI/DayOverScreen/Button/Sprite2D/Label".text = "Pay Up: $" + str(rent) 
 		plr.die()
 	else:
-		$"../UI/DayOverScreen/Label".text = "Game Over"
+		$"../UI/DayOverScreen/Label".text = "Game \nOver"
 		$"../UI/DayOverScreen/Button".text = "X"
 		plr.die()
 func update_money():
