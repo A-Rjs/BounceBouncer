@@ -2,7 +2,8 @@ extends Node2D
 
 var Player = preload("res://src/scenes/player.tscn")
 var AnimalScene = preload("res://src/scenes/animal.tscn")
-@onready var OBtn = $"UI/OutButton/StaticBody2D/Sprite2D"
+@onready var OBtn : Sprite2D = $"../UI/OuSpr"
+@onready var IBtn : Sprite2D = $"../UI/InSpr"
 @export var correct_sfx: AudioStreamPlayer
 @export var incorrect_sfx: AudioStreamPlayer
 
@@ -329,11 +330,23 @@ func _on_button_button_down() -> void:
 
 
 func _on_in_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	print_tree_pretty()
+	if IBtn != null:
+		IBtn.texture = load("res://assets/art/in_down.png")
 	press_in()
+	await get_tree().create_timer(0.25).timeout
+	if IBtn != null:
+		IBtn.texture = load("res://assets/art/in_up.png")
 
 
 func _on_out_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	print_tree_pretty()
+	if OBtn != null:
+		OBtn.texture = load("res://assets/art/out_down.png")
 	press_out()
+	await get_tree().create_timer(0.25).timeout
+	if OBtn != null:
+		OBtn.texture = load("res://assets/art/out_up.png")
 
 
 func _on_button_button2_down() -> void:
