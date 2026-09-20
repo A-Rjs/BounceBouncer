@@ -22,13 +22,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 2000
 	
 	if velocity.y >= 150:
-		sprite.region_rect.position.x = 800
+		sprite.region_rect.position.x = 2400
 	elif velocity.y >= -150:
-		sprite.region_rect.position.x = 600
+		sprite.region_rect.position.x = 1800
 	elif velocity.y >= -400:
-		sprite.region_rect.position.x = 400
+		sprite.region_rect.position.x = 1200
 	else:
-		sprite.region_rect.position.x = 200
+		sprite.region_rect.position.x = 600
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

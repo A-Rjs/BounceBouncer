@@ -2,7 +2,7 @@ extends Node2D
 
 var Player = preload("res://src/scenes/player.tscn")
 var AnimalScene = preload("res://src/scenes/animal.tscn")
-
+@onready var OBtn = $"UI/OutButton/StaticBody2D/Sprite2D"
 @export var correct_sfx: AudioStreamPlayer
 @export var incorrect_sfx: AudioStreamPlayer
 
@@ -42,7 +42,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"type":"prey",
-			"label" : "prey night"
+			"label" : "prey \n on the \n prowl!"
 		}, 
 		{
 			"rule":"disallow",
@@ -53,7 +53,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"type":"predators",
-			"label" : "predator night"
+			"label" : "predators \n on the \n prowl!"
 		}, 
 		{
 			"rule":"disallow",
@@ -64,7 +64,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"hat":"red",
-			"label" : "red night"
+			"label" : "redcaps \n night"
 		}, 
 		{
 			"rule":"disallow",
@@ -79,7 +79,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"hat":"red",
-			"label" : "no hats night"
+			"label" : "bare your \n hair!"
 		}, 
 		{
 			"rule":"allow",
@@ -94,7 +94,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"hat":"red", 
-			"label" : "blue night"
+			"label" : "bluecpas \n night"
 		}, 
 		{
 			"rule":"disallow",
@@ -109,7 +109,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"hat":"red",
-			"label" : "all hats night"
+			"label" : "all hats\n night!"
 		}, 
 		{
 			"rule":"disallow",
@@ -124,7 +124,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"fashion":"punk",
-			"label" : "punk night"
+			"label" : "punk \n night"
 		}, 
 		{
 			"rule":"disallow",
@@ -139,7 +139,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"fashion":"punk",
-			"label" : "hime night"
+			"label" : "princess \n only!"
 		}, 
 		{
 			"rule":"allow",
@@ -154,7 +154,7 @@ var ruleset = [
 		{
 			"rule":"allow", 
 			"fashion":"punk", 
-			"label" : "alt night"
+			"label" : "no normies \n allowed"
 		}, 
 		{
 			"rule":"allow",
@@ -243,6 +243,7 @@ func spawn_player():
 	plr.global_position = Vector2(1152/2,0)
 	
 func press_out():
+	
 	if active_animal == null:
 		return
 	
@@ -253,6 +254,7 @@ func press_out():
 	else:
 		money += money_per_animal_wrong
 		incorrect_sfx.play()
+	
 	
 	update_money()
 	
@@ -297,12 +299,12 @@ func show_day_over_screen():
 		$"../UI/DayOverScreen/Button".text = "Restart"
 		plr.die()
 func update_money():
-	$"../UI/Money".text = "Money: $" + str(money)
+	$"../UI/Money".text = "$" + str(money)
 func update_time():
-	$"../UI/Time".text = "Time: " + str(round(time_left) as int) + "s"
+	$"../UI/Time".text = "" + str(round(time_left) as int) + "s"
 
 func update_rules():
-	var rules_text = "RULE: "
+	var rules_text = ""
 	if rules[0].label != null:
 		rules_text += rules[0].label.to_upper()
 	#for rule in rules:

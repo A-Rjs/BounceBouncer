@@ -19,6 +19,7 @@ func setup(_species, _hat, _fashion, _should_be_allowed_in) -> void:
 	$bod.texture = load("res://assets/art/species/" + species + "_species.png")
 	$mod.texture = load("res://assets/art/fashion/" + fashion + "_fashion.png")
 	$hat.texture = load("res://assets/art/hat/" + hat + "_hat.png")
+	$Label.visible = false
 	$Label.text = "s-" + species + " h-" + hat + " f-" + fashion + " in-" + str(should_be_allowed_in)
 	
 	move_onto_screen()
@@ -38,13 +39,13 @@ func move_onto_screen():
 
 func move_enter_bar():
 	move_to_target = true
-	target_loc = Vector2(-90, 222)
+	target_loc = Vector2(-240, 222)
 	leaving = true
 
 func move_exit_bar():
 	$bod.texture = load("res://assets/art/species/" + species + "_species_out.png")
 	move_to_target = true
-	target_loc = Vector2(540, 540)
+	target_loc = Vector2(540, 640)
 	leaving = true
 
 func enter_bar():
