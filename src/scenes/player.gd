@@ -3,7 +3,7 @@ extends CharacterBody2D
 var sprite : Sprite2D = null
 
 const SPEED = 600.0
-const BOUNCE_VELOCITY = -600.0
+const BOUNCE_VELOCITY = -840.0
 
 func _ready() -> void:
 	sprite = $"Sprite2D"
@@ -11,18 +11,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		if Input.is_action_pressed("down") && velocity.y > -100:
-			velocity += get_gravity()*5 * delta
-		else: 
-			velocity += get_gravity() * delta
+		velocity += get_gravity() * delta
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_up"):
 		#velocity.y = JUMP_VELOCITY
 	if is_on_floor():
 		velocity.y = BOUNCE_VELOCITY
+	if Input.is_action_just_pressed("down"):
+		velocity.y = 2000
 
-	
 	if velocity.y >= 150:
 		sprite.region_rect.position.x = 2400
 	elif velocity.y >= -150:
@@ -39,13 +37,13 @@ func _physics_process(delta: float) -> void:
 		#velocity.x = direction * SPEED/1.5
 	#else:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
-	
+
 	if Input.is_action_pressed("left"):
 		velocity.x -= 300 * delta * 60
 	if Input.is_action_pressed("right"):
 		velocity.x += 300 * delta * 60
 	velocity.x *= 0.8
-		
+
 	if velocity.x < 0:
 		sprite.flip_h = false;
 	elif velocity.x > 0:

@@ -91,6 +91,9 @@ cache/0/33/0/underline_thickness = 0.0
 cache/0/33/0/scale = 1.0
 
 [sub_resource type="FontFile" id="FontFile_tca1p"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
