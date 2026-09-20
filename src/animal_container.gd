@@ -13,6 +13,9 @@ var species_data = {
 	"fox": {
 		"type": "predators"
 	},
+	"bear" : {
+		"type" : "predators"
+	}
 }
 
 var hats = ["none", "red", "blue"]
@@ -279,11 +282,7 @@ func press_in():
 	else:
 		show_day_over_screen()
 
-func _on_in_button_button_down() -> void:
-	press_in()
-	
-func _on_out_button_button_down() -> void:
-	press_out()
+
 	
 
 

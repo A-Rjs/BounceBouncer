@@ -2,11 +2,29 @@
 
 [ext_resource type="Script" uid="uid://diysf7mx4bgfg" path="res://src/scenes/animal.gd" id="1_l3y21"]
 [ext_resource type="Texture2D" uid="uid://cs5njuq4jms1w" path="res://icon.svg" id="1_wtwr2"]
+[ext_resource type="PackedScene" uid="uid://cw05vciyvnfji" path="res://src/scenes/sprite_gen.tscn" id="3_8tw7y"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_8tw7y"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_dhnff"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_hrcws"]
 
 [node name="Animal" type="Sprite2D" unique_id=524858043]
 texture = ExtResource("1_wtwr2")
 script = ExtResource("1_l3y21")
 
+[node name="bod" type="Sprite2D" parent="." unique_id=453545095]
+texture = SubResource("ImageTexture_8tw7y")
+
+[node name="mod" type="Sprite2D" parent="." unique_id=459052040]
+texture = SubResource("ImageTexture_dhnff")
+
+[node name="hat" type="Sprite2D" parent="." unique_id=1829999005]
+texture = SubResource("ImageTexture_hrcws")
+
 [node name="Label" type="Label" parent="." unique_id=469100578]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="SpriteGen" parent="." unique_id=1376798780 instance=ExtResource("3_8tw7y")]

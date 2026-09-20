@@ -34,11 +34,12 @@ incorrect_sfx = NodePath("../incorrectsound")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1873258382]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1355678466]
-position = Vector2(575.5, 588.5)
+position = Vector2(574, 611)
 shape = SubResource("RectangleShape2D_kgxh6")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1245713654]
-position = Vector2(749, 388)
+position = Vector2(668, 300.00003)
+scale = Vector2(0.8572917, 0.8351851)
 texture = ExtResource("2_5q4o7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1537546071]
