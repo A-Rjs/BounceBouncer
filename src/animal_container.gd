@@ -95,7 +95,7 @@ var ruleset = [
 		{
 			"rule":"disallow", 
 			"hat":"red", 
-			"label" : "bluecpas\nONly"
+			"label" : "BLUECAPS\nONly"
 		}, 
 		{
 			"rule":"disallow",
@@ -296,7 +296,7 @@ func show_day_over_screen():
 		$"../UI/DayOverScreen/Button/Sprite2D/Label".text = "Pay Up: $" + str(rent) 
 		plr.die()
 	else:
-		$"../UI/DayOverScreen/Label".text = "Game\n Over"
+		$"../UI/DayOverScreen/Label".text = "Game Over"
 		$"../UI/DayOverScreen/Button".text = "X"
 		plr.die()
 func update_money():
